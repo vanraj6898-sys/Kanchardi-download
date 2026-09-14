@@ -49,47 +49,7 @@
     ::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
 
     /* =========================================
-       2. PRELOADER SCREEN (FIXED)
-       ========================================= */
-    #preloader {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: #0b0f19;
-      z-index: 99999;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-
-    .loader-icon {
-      font-size: 3.5rem;
-      color: var(--primary);
-      animation: pulse 1.5s infinite;
-      margin-bottom: 20px;
-    }
-
-    .loader-bar {
-      width: 150px; height: 4px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 5px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .loader-bar::after {
-      content: ''; position: absolute; top: 0; left: -50%;
-      width: 50%; height: 100%;
-      background: linear-gradient(90deg, transparent, var(--primary), transparent);
-      animation: loadbar 1s linear infinite;
-    }
-
-    @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
-    @keyframes loadbar { 100% { left: 100%; } }
-
-    /* =========================================
-       3. AMBIENT BACKGROUND & FLOATING ORBS
+       2. AMBIENT BACKGROUND & FLOATING ORBS
        ========================================= */
     .bg-container {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -126,7 +86,7 @@
     }
 
     /* =========================================
-       4. NAVBAR (GLASSMORPHISM)
+       3. NAVBAR (GLASSMORPHISM)
        ========================================= */
     nav {
       position: fixed; top: 0; width: 100%;
@@ -155,7 +115,7 @@
     .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4); }
 
     /* =========================================
-       5. HERO SECTION (MAIN 3D CARD)
+       4. HERO SECTION (MAIN 3D CARD)
        ========================================= */
     .hero-section {
       min-height: 100vh; display: flex; flex-direction: column;
@@ -229,7 +189,7 @@
     @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-7px); } }
 
     /* =========================================
-       6. GLOBAL SECTION STYLES
+       5. GLOBAL SECTION STYLES
        ========================================= */
     .section-container { padding: 100px 20px; max-width: 1100px; margin: 0 auto; }
     .section-header { text-align: center; margin-bottom: 60px; }
@@ -237,7 +197,7 @@
     .section-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
     /* =========================================
-       7. FEATURES SECTION (GRID)
+       6. FEATURES SECTION (GRID)
        ========================================= */
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
     
@@ -259,7 +219,7 @@
     .feature-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
 
     /* =========================================
-       8. HOW TO INSTALL (STEPS WITH LINE)
+       7. HOW TO INSTALL (STEPS WITH LINE)
        ========================================= */
     .install-timeline { position: relative; max-width: 700px; margin: 0 auto; }
     .install-timeline::before { content: ''; position: absolute; left: 30px; top: 0; height: 100%; width: 2px; background: rgba(59,130,246,0.2); }
@@ -284,7 +244,7 @@
     .step-info p { color: var(--text-muted); font-size: 0.95rem; }
 
     /* =========================================
-       9. FAQ SECTION (ACCORDION)
+       8. FAQ SECTION (ACCORDION)
        ========================================= */
     .faq-container { max-width: 800px; margin: 0 auto; }
     .faq-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; margin-bottom: 15px; overflow: hidden; transition: 0.3s; }
@@ -302,7 +262,7 @@
     .faq-item.active .faq-answer { padding: 0 25px 20px; max-height: 200px; }
 
     /* =========================================
-       10. FOOTER
+       9. FOOTER
        ========================================= */
     footer {
       background: rgba(0, 0, 0, 0.4); border-top: 1px solid var(--card-border);
@@ -325,7 +285,7 @@
     @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
     /* =========================================
-       11. BACK TO TOP BUTTON
+       10. BACK TO TOP BUTTON
        ========================================= */
     #backToTop {
       position: fixed; bottom: -60px; right: 30px; width: 50px; height: 50px;
@@ -337,7 +297,7 @@
     #backToTop:hover { background: var(--secondary); transform: translateY(-5px); }
 
     /* =========================================
-       12. RESPONSIVE QUERIES
+       11. RESPONSIVE QUERIES
        ========================================= */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -351,12 +311,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Preloader Screen (Will definitely hide after 3 seconds) -->
-  <div id="preloader">
-    <i class="fa-solid fa-school-flag loader-icon"></i>
-    <div class="loader-bar"></div>
-  </div>
 
   <!-- Background Orbs & Motion Icons -->
   <div class="bg-container">
@@ -379,7 +333,6 @@
       <a href="#install">Install Guide</a>
       <a href="#faq">FAQ</a>
     </div>
-    <!-- 100% WORKING LINK ADDED HERE -->
     <a href="https://github.com/vanraj6898-sys/Kanchardi-download/releases/download/v1.0/Kanchardi-High-School.apk" class="nav-btn">
       <i class="fa-solid fa-download"></i> Get App
     </a>
@@ -401,7 +354,6 @@
 
         <p class="subtitle">Your school is now on your smartphone for smart education. Download the latest Android app.</p>
 
-        <!-- 100% WORKING LINK ADDED HERE -->
         <a href="https://github.com/vanraj6898-sys/Kanchardi-download/releases/download/v1.0/Kanchardi-High-School.apk" class="download-btn">
           <i class="fa-solid fa-cloud-arrow-down"></i>
           <span>Download APK (Free)</span>
@@ -443,4 +395,37 @@
       <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
         <div class="f-icon-box"><i class="fa-solid fa-file-invoice"></i></div>
         <h3>Results & Marksheets</h3>
-        <p>View your report card directly on your phone
+        <p>View your report card directly on your phone as soon as any exam result is declared.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="f-icon-box"><i class="fa-solid fa-bell-concierge"></i></div>
+        <h3>Instant Notice Board</h3>
+        <p>Get notifications for school holidays, fee details, or new announcements directly on your screen.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="f-icon-box"><i class="fa-solid fa-book-open-reader"></i></div>
+        <h3>Study Material</h3>
+        <p>Download daily homework, PDF notes, and video lectures uploaded by teachers for free.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Install Guide Section -->
+  <section class="section-container" id="install">
+    <div class="section-header" data-aos="fade-up">
+      <h2>How to Install?</h2>
+      <p>Follow these 3 simple steps to install the app outside the Play Store.</p>
+    </div>
+
+    <div class="install-timeline">
+      <div class="timeline-step" data-aos="fade-right" data-aos-delay="100">
+        <div class="step-number">1</div>
+        <div class="step-info">
+          <h4>Download APK File</h4>
+          <p>Click on the large blue button (Download APK) above. The file will start saving to your mobile.</p>
+        </div>
+      </div>
+      <div class="timeline-step" data-aos="fade-right" data-aos-delay="200">
+        <div class="step-number">2</div>
+        <div class="step-info">
+          <h4>Enabl
