@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="gu">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,365 +7,280 @@
   
   <!-- FontAwesome Icons & Google Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* =========================================
-       1. BASIC SETUP (NO COMPLEX JS)
-       ========================================= */
-    :root {
-      --bg-main: #0f172a;
-      --bg-card: #1e293b;
-      --accent: #3b82f6;
-      --accent-hover: #2563eb;
-      --text-light: #f8fafc;
-      --text-muted: #94a3b8;
-    }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background-color: var(--bg-main);
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg-main); }
-    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-    /* =========================================
-       2. SIMPLE NAVBAR
-       ========================================= */
-    nav {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      background: rgba(15, 23, 42, 0.95);
-      padding: 15px 5%;
+      min-height: 100vh;
+      background-color: #0b0f19;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #334155;
-      z-index: 100;
-      backdrop-filter: blur(10px);
-    }
-
-    .nav-logo {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text-light);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .nav-logo i { color: var(--accent); font-size: 1.5rem; }
-
-    .nav-links { display: flex; gap: 20px; }
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-
-    /* =========================================
-       3. HERO SECTION (MAIN)
-       ========================================= */
-    .hero {
-      padding: 100px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-    }
-
-    /* Fake Phone Graphic for App UI context */
-    .phone-mockup {
-      width: 120px;
-      height: 120px;
-      background: linear-gradient(135deg, #2563eb, #8b5cf6);
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 50px;
-      color: white;
-      margin-bottom: 30px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      border: 4px solid #334155;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      color: #fff;
+      padding: 20px;
     }
 
-    .hero h1 {
+    /* Ambient Glowing Orbs (Motion Background) */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      z-index: 0;
+      opacity: 0.6;
+      animation: floatOrb 8s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, #3b82f6, #1d4ed8);
+      top: -50px;
+      left: -50px;
+    }
+
+    .orb-2 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, #8b5cf6, #6d28d9);
+      bottom: -60px;
+      right: -60px;
+      animation-duration: 10s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 40px) scale(1.15); }
+    }
+
+    /* Floating Study Icons in Background */
+    .floating-icon {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.08);
       font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      letter-spacing: -1px;
+      z-index: 0;
+      animation: floatItem 6s ease-in-out infinite;
     }
 
-    .hero p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 500px;
-      margin: 0 auto 30px;
+    .fi-1 { top: 15%; left: 12%; animation-delay: 0s; }
+    .fi-2 { top: 75%; left: 10%; animation-delay: 2s; }
+    .fi-3 { top: 20%; right: 12%; animation-delay: 1.5s; }
+    .fi-4 { top: 70%; right: 15%; animation-delay: 3s; }
+
+    @keyframes floatItem {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(12deg); }
     }
 
-    .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--accent);
-      color: white;
-      padding: 16px 32px;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
-      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-    }
-    .download-btn:hover { background: var(--accent-hover); transform: translateY(-3px); }
-
-    /* =========================================
-       4. WHAT'S NEW SECTION
-       ========================================= */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 60px 20px;
+    /* Main 3D Card Entrance & Perspective */
+    .card-container {
+      position: relative;
+      z-index: 10;
+      perspective: 1000px;
+      width: 100%;
+      max-width: 440px;
+      animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
 
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 30px;
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.85) translateY(30px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      padding: 35px 25px;
       text-align: center;
-      color: var(--text-light);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
     }
 
-    .whats-new-box {
-      background: var(--bg-card);
-      border: 1px solid #334155;
-      border-radius: 16px;
-      padding: 30px;
-      margin-bottom: 60px;
-    }
-
-    .update-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 15px;
-      margin-bottom: 15px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #334155;
-    }
-    .update-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-
-    .update-icon {
-      background: rgba(59, 130, 246, 0.1);
-      color: var(--accent);
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 1.2rem;
-    }
-
-    .update-text h4 { font-size: 1.1rem; margin-bottom: 5px; color: #fff; }
-    .update-text p { font-size: 0.9rem; color: var(--text-muted); }
-
-    /* =========================================
-       5. APP FEATURES GRID
-       ========================================= */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
-
-    .f-card {
-      background: var(--bg-card);
-      border: 1px solid #334155;
-      border-radius: 16px;
-      padding: 25px;
-      transition: 0.3s;
-    }
-    .f-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-
-    .f-card-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
+    /* App Icon 3D Pop */
+    .app-icon-wrapper {
+      position: relative;
+      width: 85px;
+      height: 85px;
+      margin: 0 auto 18px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 38px;
       color: white;
-      margin-bottom: 20px;
+      box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+      transform: translateZ(40px);
     }
 
-    /* Colors based on your app screenshot */
-    .bg-green { background: #10b981; }
-    .bg-yellow { background: #f59e0b; }
-    .bg-purple { background: #8b5cf6; }
-    .bg-red { background: #ef4444; }
+    h1 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+      transform: translateZ(30px);
+    }
 
-    .f-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
-    .f-card p { font-size: 0.9rem; color: var(--text-muted); }
+    .badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.18);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      color: #60a5fa;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 50px;
+      margin-bottom: 15px;
+      transform: translateZ(25px);
+    }
 
-    /* =========================================
-       6. FOOTER
-       ========================================= */
-    footer {
-      background: #0b0f19;
-      padding: 40px 20px;
+    p.subtitle {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+      line-height: 1.5;
+      transform: translateZ(20px);
+    }
+
+    /* Glowing 3D Button */
+    .download-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: #fff;
+      text-decoration: none;
+      padding: 16px 28px;
+      border-radius: 18px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform: translateZ(35px);
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      transform: translateZ(45px) scale(1.03);
+      box-shadow: 0 18px 40px rgba(124, 58, 237, 0.55);
+    }
+
+    .download-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        rgba(255, 255, 255, 0) 20%,
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0) 80%
+      );
+      transform: rotate(25deg);
+      animation: buttonShine 4s infinite;
+    }
+
+    @keyframes buttonShine {
+      0% { left: -60%; }
+      30%, 100% { left: 140%; }
+    }
+
+    /* Small Specs Footer */
+    .specs-grid {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      transform: translateZ(20px);
+    }
+
+    .spec-item {
       text-align: center;
-      border-top: 1px solid #334155;
-      margin-top: 50px;
     }
-    footer p { color: var(--text-muted); font-size: 0.9rem; }
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hero h1 { font-size: 2rem; }
+    .spec-item span {
+      display: block;
+      font-size: 0.72rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .spec-item strong {
+      font-size: 0.85rem;
+      color: #cbd5e1;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="#" class="nav-logo">
-      <i class="fa-solid fa-school-flag"></i> Kanchardi App
-    </a>
-    <div class="nav-links">
-      <a href="#updates">What's New</a>
-      <a href="#features">Features</a>
-    </div>
-  </nav>
+  <!-- Background Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="phone-mockup">
-      <i class="fa-solid fa-graduation-cap"></i>
-    </div>
-    
-    <h1>Kanchardi High School</h1>
-    <p>The complete digital school experience for students of 2026 Academic Year. Real-time attendance, quizzes, and more.</p>
-    
-    <a href="https://github.com/vanraj6898-sys/Kanchardi-download/releases/download/v1.0/Kanchardi-High-School.apk" class="download-btn">
-      <i class="fa-brands fa-android"></i> Download APK v1.0
-    </a>
-  </header>
+  <!-- Background Floating Motion Icons -->
+  <i class="fa-solid fa-graduation-cap floating-icon fi-1"></i>
+  <i class="fa-solid fa-book-open floating-icon fi-2"></i>
+  <i class="fa-solid fa-bell floating-icon fi-3"></i>
+  <i class="fa-solid fa-school floating-icon fi-4"></i>
 
-  <!-- What's New Section -->
-  <section class="container" id="updates">
-    <h2 class="section-title">What's New in v1.0?</h2>
-    
-    <div class="whats-new-box">
-      <div class="update-item">
-        <div class="update-icon"><i class="fa-solid fa-bug-slash"></i></div>
-        <div class="update-text">
-          <h4>Bug Fixes & Performance</h4>
-          <p>Fixed minor glitches in the messaging system and improved app loading speed.</p>
-        </div>
-      </div>
+  <!-- Interactive 3D Card -->
+  <div class="card-container">
+    <div class="glass-card" id="tiltCard" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
       
-      <div class="update-item">
-        <div class="update-icon"><i class="fa-solid fa-bolt"></i></div>
-        <div class="update-text">
-          <h4>New Feature: Live Quizzes</h4>
-          <p>Students can now participate in daily quizzes directly from the app dashboard.</p>
-        </div>
+      <div class="app-icon-wrapper">
+        <i class="fa-solid fa-school-flag"></i>
       </div>
 
-      <div class="update-item">
-        <div class="update-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <div class="update-text">
-          <h4>Security Update</h4>
-          <p>Enhanced login security for student profiles and secure homework downloads.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <h1>Kanchardi High School</h1>
+      <div class="badge">Official App v1.0</div>
 
-  <!-- Features Section -->
-  <section class="container" id="features">
-    <h2 class="section-title">App Features</h2>
-    
-    <div class="features-grid">
-      
-      <!-- Feature 1 -->
-      <div class="f-card">
-        <div class="f-card-icon bg-green">
-          <i class="fa-solid fa-calendar-check"></i>
-        </div>
-        <h3>Real-time Attendance</h3>
-        <p>Track your daily presence, low warnings, and total present days instantly from the dashboard.</p>
-      </div>
+      <p class="subtitle">Download the latest official Android app below</p>
 
-      <!-- Feature 2 -->
-      <div class="f-card">
-        <div class="f-card-icon bg-yellow">
-          <i class="fa-solid fa-trophy"></i>
-        </div>
-        <h3>Leaderboard & Badges</h3>
-        <p>Compete with classmates, earn "My Badges", and see who tops the school leaderboard.</p>
-      </div>
+      <!-- 100% WORKING DOWNLOAD LINK -->
+      <a href="https://github.com/vanraj6898-sys/Kanchardi-download/releases/download/v1.0/Kanchardi-High-School.apk" class="download-btn">
+        <i class="fa-solid fa-cloud-arrow-down"></i>
+        <span>Download APK (Free)</span>
+      </a>
 
-      <!-- Feature 3 -->
-      <div class="f-card">
-        <div class="f-card-icon bg-purple">
-          <i class="fa-solid fa-chalkboard-user"></i>
+      <!-- Quick Info Specs -->
+      <div class="specs-grid">
+        <div class="spec-item">
+          <span>Version</span>
+          <strong>v1.0</strong>
         </div>
-        <h3>Daily Quizzes</h3>
-        <p>Test your knowledge with interactive daily quizzes designed by your teachers.</p>
-      </div>
-
-      <!-- Feature 4 -->
-      <div class="f-card">
-        <div class="f-card-icon bg-red">
-          <i class="fa-solid fa-envelope-open-text"></i>
+        <div class="spec-item">
+          <span>Platform</span>
+          <strong>Android</strong>
         </div>
-        <h3>Direct Messaging</h3>
-        <p>Use the Inbox and "Send Message" feature to communicate securely with teachers.</p>
-      </div>
-
-      <!-- Feature 5 -->
-      <div class="f-card">
-        <div class="f-card-icon" style="background:#3b82f6;">
-          <i class="fa-solid fa-file-pdf"></i>
+        <div class="spec-item">
+          <span>Security</span>
+          <strong style="color: #4ade80;"><i class="fa-solid fa-shield-halved"></i> Verified</strong>
         </div>
-        <h3>Homework & Assignments</h3>
-        <p>Never miss a task. Access all your assignments and study materials in one place.</p>
-      </div>
-
-      <!-- Feature 6 -->
-      <div class="f-card">
-        <div class="f-card-icon" style="background:#0ea5e9;">
-          <i class="fa-solid fa-image"></i>
-        </div>
-        <h3>School Gallery</h3>
-        <p>View photos and updates from recent school events, sports days, and celebrations.</p>
       </div>
 
     </div>
-  </section>
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Kanchardi High School. All rights reserved.</p>
-  </footer>
-
+  <!-- Vanilla-Tilt JS for Smooth 3D Motion -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </body>
-                                   </html>
-  
+</html>
